@@ -6,7 +6,7 @@
 <!-- Modified and Used by Austrian Academy of Sciences Press -->
 <!-- Purpose: Creation and Delivery of valid Journal Publishing XML-Documents -->
 <!-- Author: Heinz Rosenkranz, heinz.rosenkranz@a7111.com -->
-<!-- Date: January 2016 -->
+<!-- Date: January 2026 -->
 
 
 <!-- ENTITY-DECLARATION SOURCES -->
@@ -1592,5 +1592,6 @@ For element-citation and mixed-citation see Links and References
 <!ATTLIST  list-item  
 	id  ID  #IMPLIED 
 	specific-use  CDATA  #IMPLIED	>
+
 
 
