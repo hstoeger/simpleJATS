@@ -1,0 +1,1596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Simple JATS DTD -->
+<!-- Subset of Journal Publishing DTD with MathML3  Version 1.1d3 -->
+<!--   JATS-journalpublishing1-mathml3.dtd -->
+<!-- Based on the ANSI/NISO Z39.96 Journal Article Tag Suite (JATS) -->
+<!-- Modified and Used by Austrian Academy of Sciences Press -->
+<!-- Purpose: Creation and Delivery of valid Journal Publishing XML-Documents -->
+<!-- Author: Heinz Rosenkranz, heinz.rosenkranz@a7111.com -->
+<!-- Date: January 2016 -->
+
+
+<!-- ENTITY-DECLARATION SOURCES -->
+<!-- 
+	JATS-journalpubcustom-modules1.ent
+		JATS-journalpubcustom-classes1.ent
+			emphasis.class  face-markup.class  citation.class  citation-additions.class 
+			contrib-info.class  date.class  name.class  rest-of-para.class
+
+		JATS-journalpubcustom-mixes1.ent
+			emphasized-text  just-rendition  sec-back-matter-mix
+
+		JATS-journalpubcustom-models1.ent (*empty Entities)
+			abbrev-journal-title-elements*  citation-elements  conf-acronym-elements*  conf-loc-elements  
+			conf-name-elements*  conf-num-elements*	conf-sponsor-elements  degrees-elements*  
+			edition-elements  fax-elements*  given-names-elements*  institution-elements  issue-elements* 
+			journal-title-elements*  kwd-elements  patent-elements*  person-group-elements  phone-elements*  
+			prefix-elements*  preformat-elements  publisher-loc-elements  publisher-name-elements  
+			std-organization-elements  suffix-elements*  surname-elements*  uri-elements*  version-elements  
+			volume-elements*  abstract-model  ack-model  anonymous-model  array-model  article-meta-model  
+			conference-model  contrib-model  date-model  def-item-model  fig-model  fig-group-model  
+			journal-meta-model  list-model  on-behalf-of-elements ref-model  sec-model  trans-abstract-model  
+			fn-types  fn-atts  inline-graphic-atts  person-group-atts  sec-atts
+
+		JATS-nlmcitation1.ent
+			nlm-citation  nlm-citation-atts 
+
+	JATS-mathml3-modules1.ent
+		mathml3-qname1.mod
+		mathml3.dtd
+		mathml/mmlextra.ent
+		mathml/mmlalias.ent
+
+	JATS-modules1.ent
+		JATS-default-classes1.ent
+			address.class  address-line.class  citation.class  id.class  investigator-name.class  name.class  
+			person-name.class  recipient-name.class  contrib-info.class  person-group-info.class  conference.class  
+			date.class  institution.class  kwd.class  license.class  back.class front.class  access.class  
+			block-display.class  floats-display.class  inline-display.class  simple-display.class  block-math.class 
+			math.class  appearance.class (hr)  emphasis.class  face-markup.class  subsup.class  address-link.class  
+			simple-link.class  fn-link.class  article-link.class  related-article.class  rest-of-para.class  intable-para.class  
+			funding.class  phrase.class  phrase-content.class  references.class  std.class	
+			simple classes: 
+			def  degrees  label  note  collab  string-name  contrib  contrib-group  contrib-id  abstract  corresp  
+			date-parts.class  title  journal-id  string-date  app  sig  caption  fig  break  xref  def-list  list-item  statement  
+			styled-content  price  ref  ref-list  sec table tbody
+
+		JATS-default-mixes1.ent 
+			sec-level  doc-back-matter-mix  sec-back-matter-mix  para-level  inside-cell  inside-table-wrap  
+			emphasized-text  just-rendition  rendition-plus  simple-phrase  simple-text 
+
+		JATS-common-atts1.ent
+			jats-common-atts  jats-base-atts
+
+		JATS-common1.ent
+			see details inside document
+
+		JATS-articlemeta1.ent 
+			abstract-atts  alt-title-atts  article-categories-atts  article-meta-atts  author-comment-atts  author-notes-atts  
+			article-id-atts  corresp-atts	compound-kwd-atts  compound-kwd-part-atts  compound-subject-atts  
+			compound-subject-part-atts  conf-acronym-atts  conf-num-atts  conf-theme-atts  conference-atts  count-atts  
+			counts-atts  equation-count-atts  fig-count-atts  history-atts  kwd-atts  kwd-group-atts  nested-kwd-atts  
+			page-count-atts  product-atts  pub-date-atts  ref-count-atts  self-uri-atts  series-text-atts  series-title-atts  
+			string-conf-atts 	subj-group-atts  subject-atts  subtitle-atts  table-count-atts  title-group-atts  trans-abstract-atts  
+			unstructured-kwd-group-atts  word-count-atts
+			Models (with preceeding -model declaration): 
+			article-meta-model  article-id  article-categories  subj-group  subject  compound-subject  compound-subject-part  
+			series-title  series-text  author-notes  product  history  self-uri  abstract  trans-abstract  kwd-group  kwd-elements  
+			kwd  compound-kwd  compound-kwd-part  nested-kwd  unstructured-kwd-group  corresp  pub-date  conference  
+			conf-acronym  conf-num  conf-theme  string-conf  count  equation-count  fig-count  table-count  ref-count  
+			page-count  word-count  title-group  subtitle  alt-title?  author-comment
+
+		JATS-backmatter1.ent
+			app-atts  app-group-atts  fn-group-atts  glossary-atts  app-group  app  fn-group  glossary
+
+		JATS-display1.ent
+			display-atts  array-atts  boxed-text-atts  caption-atts  chem-struct-atts  chem-struct-wrap-atts  code-atts  fig-atts  
+			fig-group-atts  graphic-atts  inline-graphic-atts  media-atts  preformat-atts  supplementary-material-atts  
+			table-wrap-group-atts  table-wrap-atts	table-wrap-foot-atts  array  boxed-text  chem-struct-wrap  chem-struct  
+			fig-group  fig  caption  graphic  media  inline-graphic	preformat  code  supplementary-material  table-wrap-group  
+			table-wrap  table-wrap-foot
+
+		JATS-format1.ent
+			bold-atts  break-atts  fixed-case-atts  hr-atts  italic-atts  monospace-atts  overline-atts  roman-atts  rb-atts  rp-atts  
+			rt-atts  ruby-atts  sans-serif-atts  sc-atts  strike-atts  sub-atts  sup-atts  underline-atts  hr  break  bold fixed-case  
+			italic  monospace  roman  sans-serif  sc  overline  strike  sub  sup  underline  ruby  rb  rt  rp
+
+		JATS-funding1.ent
+			award-group-atts  award-id-atts  funding-group-atts  funding-source-atts  funding-statement-atts  open-access-atts  
+			principal-award-recipient-atts  principal-investigator-atts  funding-group  funding-statement  open-access  award-group
+			funding-source  award-id  principal-award-recipient  principal-investigator
+
+		JATS-journalmeta1.ent
+			abbrev-journal-title-atts  journal-meta-atts  journal-title-atts  journal-title-group-atts  journal-subtitle-atts 
+			journal-meta  journal-title-group  journal-title  journal-subtitle  abbrev-journal-title
+
+		JATS-link1.ent
+			ref-types  fn-atts  inline-supplementary-material-atts  target-atts  xref-atts  fn  target  xref  
+			inline-supplementary-material
+
+		JATS-list1.ent
+			def-head-atts  def-item-atts  def-list-atts  list-atts  list-item-atts  term-atts  term-head-atts  
+			def-list  term-head  def-head  def-item  term  list  list-item
+
+		JATS-math1.ent
+			disp-formula-atts  disp-formula-group-atts  inline-formula-atts  tex-math-atts  inline-formula  
+			disp-formula  disp-formula-group  tex-math
+
+		JATS-para1.ent
+			disp-quote-atts  p-atts  speaker-atts  speech-atts  statement-atts  verse-group-atts  verse-line-atts  
+			p  disp-quote  speech  speaker  statement  verse-group  verse-line
+
+		JATS-phrase1.ent
+			abbrev-atts  milestone-atts  named-content-atts  styled-content-atts  abbrev  named-content  styled-content
+
+		JATS-references1.ent
+			access-date-atts  annotation-atts  chapter-title-atts  comment-atts  data-title-atts  date-in-citation-atts  edition-atts  
+			gov-atts	note-atts  part-title-atts  patent-atts  person-group-atts  pub-id-atts  ref-atts  ref-list-atts  series-atts  
+			source-atts  std-atts 	std-organization-atts  time-stamp-atts  trans-source-atts  version-atts  source-elements  
+			ref-list  ref  note  access-date  annotation  chapter-title  comment  data-title  date-in-citation  edition  gov  part-title  
+			patent  person-group  pub-id  series  std  std-organization  source  time-stamp  trans-source  version
+
+		JATS-related-object1.ent
+			related-object-atts  related-object
+
+		JATS-section1.ent
+			floats-group-atts  sec-atts  sec-meta-atts  floats-group  sec  sec-meta
+
+		JATS-XHTMLtablesetup1.ent ???
+		xhtml-table-1.mod
+		xhtml-inlstyle-1.mod
+
+		JATS-mathml3-mathmlsetup1.ent ???
+
+		JATS-notat1.ent ???
+-->
+
+<!-- JATS source classes
+		not used
+<!ENTITY % emphasized-text
+                "| %address-link.class; | %article-link.class; | %emphasis.class; | %inline-display.class; | 
+				%inline-math.class; | %math.class; | %phrase.class; | %simple-link.class; | %subsup.class;" >
+<!ENTITY % simple-phrase "%emphasized-text;" >
+<!ENTITY % phrase-content.class  "named-content | styled-content" >
+<!ENTITY % phrase.class "abbrev | milestone-end | milestone-start | named-content | styled-content" >
+<!ENTITY % simple-text  "| %emphasis.class; | %inline-display.class; |
+                %inline-math.class; | %phrase.class; | %subsup.class; " >
+<!ENTITY % textual-form-elements  "| %emphasis.class; | %inline-display-noalt.class; |
+                %math.class; | %phrase-content.class; | %subsup.class;"    >
+<!ENTITY % access.class "alt-text | long-desc"                       >
+<!ENTITY % simple-display.class  "alternatives | array | code | graphic | media | preformat" >
+<!ENTITY % inline-display.class  "alternatives | inline-graphic | private-char" >
+<!ENTITY % block-display.class
+                "address | alternatives | array | boxed-text | chem-struct-wrap | code | fig | fig-group | 
+				graphic | media | preformat | supplementary-material | table-wrap | table-wrap-group" >
+<!ENTITY % inline-math.class "chem-struct | inline-formula" >
+<!ENTITY % block-math.class "disp-formula | disp-formula-group" >
+<!ENTITY % math.class   "tex-math | mml:math"  >
+<!ENTITY % simple-link.class "fn | target | xref" >
+<!ENTITY % address-link.class "email | ext-link | uri" >
+<!ENTITY % disp-formula-elements  "| %access.class; | %abstract.class; | %address-link.class; |
+                %break.class; | %emphasis.class; | %inline-display-noalt.class; | %inline-math.class; | 
+				%kwd-group.class; | %label.class; | %phrase-content.class; | %math.class; |  
+				%simple-display.class; | %subsup.class;" >
+<!ENTITY % inline-formula-elements "| %emphasis.class; | %inline-display.class; |
+                %inline-math.class; | %math.class; | %phrase-content.class; | %subsup.class;" >
+<!ENTITY % intable-para.class  "disp-quote | speech | statement | verse-group" >
+-->
+
+
+<!-- ============================================= -->
+<!--  UNICODE CHARACTER ENTITIES  -->
+<!--  Not supported by Mozilla !  -->
+<!-- ============================================= -->
+<!-- ENTITY % unicode-chars.entities  SYSTEM "unicode-chars.ent" -->
+<!--  Invoke Unicode Characters entities  -->
+<!-- %unicode-chars.entities; -->
+
+
+<!-- ============================================= -->
+<!-- MATHML SETUP    -->
+<!-- ============================================= -->
+
+<!--   MATHML 3.0 QUALIFIED NAMES  (invoked by mathml3.dtd) -->
+<!ENTITY % mathml-qname.mod  PUBLIC "-//W3C//ENTITIES MathML 3.0 Qualified Names 1.0//EN"
+"mathml3-qname1.mod" >
+
+<!--  MATHML 3.0 DTD  -->
+<!ENTITY % mathml.dtd  PUBLIC  "-//W3C//DTD MathML 3.0//EN" 
+"mathml3.dtd"  >
+
+<!--  Set up W3C Schema (override the MathML DTD to fix the NS ) -->
+<!ENTITY % Schema.prefix "xsi" >
+<!ENTITY % Schema.xmlns "http://www.w3.org/2001/XMLSchema-instance" >
+<!ENTITY % Schema.xmlns.attrib  "xmlns:%Schema.prefix;  CDATA  #FIXED '%Schema.xmlns;'" >
+
+<!--  Set up "mml" as the Math Prefix   -->
+<!-- allow modification in mathml-qname.mod -->
+<!ENTITY % MATHML.prefixed  "INCLUDE" > 
+<!ENTITY % MATHML.prefix "mml" >
+<![%MATHML.prefixed;[ <!ENTITY % MATHML.pfx   "%MATHML.prefix;:" > ]]>
+
+<!-- disable the MathML invokation of Unicode Characters entities -->
+<!ENTITY % mathml-charent.module "IGNORE" > 
+<!-- restriction to excessive annotation-model -->
+<!ENTITY % annotation-xml.model  "(p+)" > 
+
+<!--  Invoke MathML  -->
+%mathml.dtd;
+
+
+
+<!-- ============================================= -->
+<!-- ENTITY DECLARATIONS  -->
+<!-- ============================================= -->
+
+<!-- common-attributes:  used with most of the elements -->
+<!ENTITY % common-attributes "
+	id ID #IMPLIED 
+	content-type  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED" >
+
+<!-- Typographical emphasis (highlighting) -->
+<!ENTITY % emphasis.class  "bold | fixed-case | italic | monospace | overline | roman | 
+				sans-serif | strike | underline | sc |sub | sup" > 
+<!-- Discarded Elements:  overline-start | overline-end | underline-start | underline-end | ruby -->
+<!-- Included Elements:  sub | sup -->
+
+<!ENTITY % just-rendition "%emphasis.class;" >
+<!-- Discarded Elements:  %phrase-content.class; -->
+<!-- JATS source
+<!ENTITY % just-rendition  "| %emphasis.class;  | %subsup.class; | %phrase-content.class;" >
+-->
+<!ENTITY % simple-display  "array | code | graphic | media | preformat" >
+
+<!--  date:  day, month, and year should be numeric values
+		season:  spring, summer, fall, winter ? -->
+<!ENTITY % date-model  "( ( (day?, month?) | season)?, year )" >
+<!-- Discarded Elements:  era?, string-date? -->
+
+<!-- Adress -->
+<!ENTITY % address-class  "addr-line | city | country | institution | phone | postal-code | state" >
+
+<!-- Link elements that can be used inside addresses -->
+<!ENTITY % address-link  "email | ext-link | uri" >
+<!-- Simple linking element that might be inside, for example, a Keyword -->
+<!ENTITY % simple-link "fn | target | xref" >
+
+<!-- link-atts:  used for elements that are a link by definition, such as xref -->
+<!ENTITY % link-atts
+	"xlink:href  CDATA  #IMPLIED 
+    xmlns:xlink  CDATA  #IMPLIED
+	xlink:type  (simple)  #IMPLIED
+    xlink:role  CDATA  #IMPLIED
+    xlink:title CDATA  #IMPLIED
+    xlink:show  (embed | new | none | other | replace)   #IMPLIED
+    xlink:actuate  (none | onLoad | onRequest | other)   #IMPLIED" >
+ 
+<!-- might-link-atts:  used for elements which may need to link to external sources 
+	or other objects within the document, but may not necessarily act as a link at all  -->
+<!ENTITY % might-link-atts
+	"xlink:href  CDATA  #IMPLIED 
+    xmlns:xlink  CDATA  #IMPLIED
+	xlink:type  (simple)  #IMPLIED
+    xlink:role  CDATA  #IMPLIED
+    xlink:title CDATA  #IMPLIED
+    xlink:show  (embed | new | none | other | replace)   #IMPLIED
+    xlink:actuate  (none | onLoad | onRequest | other)   #IMPLIED"  >
+
+
+
+<!-- ============================================= -->
+<!-- ROOT ELEMENT  article  -->
+<!-- The complete content of a journal article -->
+<!-- ============================================= -->
+<!ELEMENT article (front, body?, back?, floats-group?)>
+<!-- JATS source
+<!ENTITY % article-full-model "(front, body?, back?, floats-group?, (sub-article* | response*) )" >
+Discarded Elements:  (sub-article* | response*) 
+-->
+<!ATTLIST  article 
+	id ID #IMPLIED
+	article-type CDATA #IMPLIED
+	specific-use  CDATA  #IMPLIED
+    dtd-version CDATA #FIXED "1.1d3"
+	xml:lang  NMTOKEN  'en'
+    xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink"
+    xmlns:mml CDATA #FIXED "http://www.w3.org/1998/Math/MathML"
+    xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance" >
+<!-- Discarded Attributes: 
+    xml:lang NMTOKEN #IMPLIED - also discarded in all other attribute-sets
+	xmlns:ali CDATA #FIXED "http://www.niso.org/schemas/ali/1.0" ??? -->
+
+
+
+<!-- ============================================= -->
+<!-- MAIN ELEMENT  front  -->
+<!-- 	The metadata concerning an article, such as name and issue 
+		of the journal and the name and author(s) of the article -->
+<!-- ============================================= -->
+<!ELEMENT front (journal-meta, article-meta, notes?) >
+<!-- JATS source
+<!ENTITY % front-model  "(journal-meta, article-meta, (%front-back.class;)? )"  >
+<!ENTITY % front-back.class  "notes"  > 
+-->
+<!ATTLIST  front id ID #IMPLIED >
+
+
+
+<!-- ============================================= -->
+<!-- SUB ELEMENT  journal-meta  -->
+<!-- Metadata that identifies the journal containing the article  -->
+<!-- ============================================= -->
+<!ELEMENT journal-meta (journal-id*, journal-title-group*, (contrib-group | aff)*, issn*, isbn*, publisher?, notes* )>
+<!-- Discarded Elements:  issn-l?, self-uri*, custom-meta-group? 
+<!ENTITY % custom-meta-group "(custom-meta+)" >
+<!ENTITY % custom-meta "(meta-name, meta-value)" >
+-->
+<!ATTLIST  journal-meta id ID #IMPLIED >
+
+<!-- journal-id -->
+<!-- Short code that represents the journal or journal domain. -->
+<!ELEMENT journal-id (#PCDATA) >
+<!ATTLIST  journal-id
+	id ID #IMPLIED 
+	journal-id-type  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED >
+
+
+<!-- journal-title-group -->
+<!-- 	A container element to hold the title and subtitle (if any) 
+		for the journal in which the article was published -->
+<!ELEMENT journal-title-group (journal-title*, journal-subtitle*, abbrev-journal-title*)>
+<!-- Discarded Elements:  trans-title-group*,  -->
+<!ATTLIST  journal-title-group 	
+	id ID #IMPLIED 
+	content-type CDATA #IMPLIED >
+
+<!ELEMENT journal-title (#PCDATA | %just-rendition; )* >
+<!ATTLIST  journal-title %common-attributes; >
+
+<!ELEMENT journal-subtitle (#PCDATA | %just-rendition;)* > 
+<!ATTLIST  journal-subtitle %common-attributes; >
+
+<!ELEMENT abbrev-journal-title (#PCDATA | %just-rendition;)* > 
+<!ATTLIST  abbrev-journal-title 
+	id ID #IMPLIED 
+	abbrev-type CDATA #IMPLIED
+	specific-use  CDATA  #IMPLIED >
+
+<!-- contrib-group and aff: see article-meta -->
+
+<!-- issn: International Standard Serial Number -->
+<!ELEMENT issn (#PCDATA) >
+<!ATTLIST  issn  
+	%common-attributes;
+	pub-type  CDATA #IMPLIED
+    publication-format  CDATA #IMPLIED >
+
+<!-- isbn: International Standard Book Number -->
+<!ELEMENT isbn (#PCDATA) >
+<!ATTLIST  isbn  
+	%common-attributes;
+    publication-format  CDATA #IMPLIED >
+
+<!-- publisher: Who published the work -->
+<!ELEMENT publisher ((publisher-name, publisher-loc?)+) >
+<!ATTLIST  publisher  
+	id ID #IMPLIED 
+	content-type  CDATA #IMPLIED >
+
+<!ELEMENT publisher-name (#PCDATA | %address-link; | %just-rendition;)* >
+<!ATTLIST  publisher-name 
+	id ID #IMPLIED 
+	specific-use  CDATA  #IMPLIED >
+
+<!ELEMENT publisher-loc (#PCDATA | %address-link; | %just-rendition;)* >
+<!-- Discarded Elements: %address.class;  -->
+<!ATTLIST  publisher-loc 
+	id ID #IMPLIED 
+	specific-use  CDATA  #IMPLIED >
+
+
+
+<!-- ============================================= -->
+<!-- SUB ELEMENT  article-meta  -->
+<!-- 	Metadata that identifies the article, e.g. bibliographic information 
+		such as the title, author, and copyright year  -->
+<!-- ============================================= -->
+<!ELEMENT article-meta  (article-id*, article-categories?, title-group?, (contrib-group | aff)*, author-notes?, 
+					pub-date*, volume*, volume-id*, issue*, issue-id*, isbn*, (fpage, lpage?, page-range?)?, history?, 
+					permissions?, (related-article | related-object)*, self-uri*, abstract*, kwd-group*, conference*, 
+					counts?, custom-meta-group?) >
+<!ATTLIST  article-meta id ID #IMPLIED >
+<!-- JATS source
+<!ENTITY % article-meta-model
+				"(article-id*, article-categories?, title-group?, (%contrib-group.class; | %aff-alternatives.class;)*,
+				author-notes?, pub-date*, volume*, volume-id*, volume-series?, issue*, issue-id*, issue-title*,
+				issue-sponsor*, issue-part?, volume-issue-group*, isbn*, supplement?, ( (fpage, lpage?, page-range?) |
+				elocation-id )?, (%address-link.class; | product | supplementary-material)*, history?, permissions?, 
+				self-uri*, (%related-article.class;)*, (%abstract.class;)*, trans-abstract*, (%kwd-group.class;)*,
+				funding-group*, conference*, counts?, custom-meta-group?)" >
+Discarded Elements:  volume-series?, issue-title*, issue-sponsor*, issue-part?, volume-issue-group*, 
+	supplement?, elocation-id?, (%address-link.class; | product | supplementary-material)*, 
+	trans-abstract*, funding-group*, custom-meta-group?
+ -->
+
+
+<!-- article-id -->
+<!-- Optional unique identifiers assigned to the articel by the publisher or institutions -->
+<!ELEMENT  article-id  (#PCDATA) >
+<!ATTLIST  article-id 
+	id ID #IMPLIED
+	specific-use  CDATA  #IMPLIED
+	pub-id-type (accession | ark | art-access-id | arxiv | coden | doaj | doi | handle | isbn | manuscript | 
+					medline | other | pii | pmcid |  pmid | publisher-id | sici | std-designation) #IMPLIED >
+<!-- Discarded Attributes: pub-id-type:  ??? -->
+
+
+<!-- article-categories -->
+<!-- used to group articles into related clusters -->
+<!ELEMENT article-categories (subj-group*, series-title*, series-text*) >
+<!ATTLIST  article-categories  id ID #IMPLIED >
+
+<!ELEMENT subj-group (subject+, subj-group*) >
+<!-- Discarded Elements: compound-subject -->
+<!ATTLIST  subj-group  
+	%common-attributes; 
+	subj-group-type CDATA #IMPLIED
+>
+
+<!-- subject:  used to describe the subject of an article -->
+<!ELEMENT subject (#PCDATA | %just-rendition;)* >
+<!-- Discarded Elements: %inline-display.class; | %inline-math.class; -->
+<!ATTLIST  subject  
+	id ID #IMPLIED 
+	content-type CDATA #IMPLIED >
+
+<!-- 	Title of a journal series or the title of a series of
+		articles internal to one issue of a journal -->
+<!ELEMENT series-title (#PCDATA | %just-rendition;)* >
+<!ATTLIST  series-title  	%common-attributes; >
+
+<!-- Textual description of the series of articles -->
+<!ELEMENT series-text (#PCDATA | %just-rendition;)* >
+<!ATTLIST  series-text  	%common-attributes; >
+
+<!-- title-group -->
+<!-- Wrapper element to hold the various article titles -->
+<!ELEMENT title-group (article-title, subtitle*, alt-title*) >
+<!ATTLIST  title-group  id ID #IMPLIED >
+
+<!ELEMENT article-title (#PCDATA | %just-rendition; | inline-formula | %simple-link; | break)* >
+<!ATTLIST  article-title  id ID #IMPLIED >
+
+<!-- JATS-Extension -->
+<!ELEMENT chapter-title (#PCDATA | %just-rendition; )* >
+
+<!ELEMENT subtitle (#PCDATA | %just-rendition; | inline-formula | %simple-link; | break)* >
+<!ATTLIST  subtitle  	%common-attributes; >
+
+<!-- alt-title:  short version of the title, or an ASCII title -->
+<!ELEMENT  alt-title (#PCDATA | %just-rendition; | %simple-link; | break)* >
+<!ATTLIST  alt-title  
+	id ID #IMPLIED 
+	alt-title-type  CDATA #IMPLIED
+	specific-use  CDATA #IMPLIED >
+
+
+<!-- contrib-group:  element for grouping of contributors -->
+<!ELEMENT contrib-group (contrib+, aff*) >
+<!ATTLIST  contrib-group %common-attributes; >
+
+<!-- contributor:  information about a single contributor, e.g. author or editor. -->
+<!ELEMENT contrib (contrib-id*, (collab | name)*, (degrees | aff | bio | email | role | xref)*) >
+<!-- Discarded Elements:  contrib-info* -->
+<!ATTLIST  contrib 
+	id ID #IMPLIED 
+    contrib-type  CDATA #IMPLIED
+    corresp  (no | yes)  #IMPLIED
+    equal-contrib  (no | yes) #IMPLIED
+    deceased   (no | yes)  #IMPLIED
+    rid   IDREFS  #IMPLIED
+    specific-use  CDATA  #IMPLIED >
+<!-- JATS source
+<!ENTITY % contrib-model
+                "((%contrib-id.class;)*, (%name.class;)*, (%degree.class; | %contrib-info.class;)* )">
+<!ENTITY % contrib-id.class  "contrib-id" >
+<!ENTITY % contrib-info.class
+                "address | aff | aff-alternatives | author-comment | bio | email |  etal |
+                ext-link | on-behalf-of | role | uri | xref">
+-->
+
+<!-- contrib-id: identifier for a person such as a contributor or principal investigator. 
+	This element will hold an ORCID, a trusted publishers's identifier, or a JST or NII identifier -->
+<!ELEMENT contrib-id (#PCDATA) >
+<!ATTLIST  contrib-id 
+	%common-attributes;
+	authenticated  (true | false)  "false" >
+
+<!-- name:  structured name of a person -->
+<!ELEMENT name ( ( (surname, given-names?) | given-names), prefix?, suffix?) >
+<!ATTLIST name 
+	%common-attributes;
+	name-style (western | eastern | islensk | given-only)  "western" >
+
+<!-- surname:  family name or single name (Cher, Pele) -->
+<!ELEMENT surname (#PCDATA | %just-rendition;)* >
+<!ATTLIST  surname 
+	id ID #IMPLIED 
+	initials  CDATA  #IMPLIED >
+
+<!-- given-names: all given names for a person, such
+    as the first name, middle names, maiden name  -->
+<!ELEMENT given-names (#PCDATA | %just-rendition;)* >
+<!ATTLIST  given-names 
+	id ID #IMPLIED 
+	initials  CDATA  #IMPLIED >
+
+<!-- prefix: Honorifics preceding the surname, e.g,  Professor, Dr., Sir, et al. -->
+<!ELEMENT prefix (#PCDATA | %just-rendition;)* >
+<!ATTLIST  prefix %common-attributes; >
+
+<!-- suffix: Text used as a suffix to a person's name, for example: Sr., Jr., III, 3rd -->
+<!ELEMENT suffix (#PCDATA | %just-rendition;)* >
+<!ATTLIST  suffix %common-attributes; >
+
+<!-- degree: Academic degrees or professional certifications -->
+<!ELEMENT degrees (#PCDATA | %just-rendition;)* >
+<!ATTLIST  degrees %common-attributes; >
+
+<!-- affiliation:  name of an institution or organization  -->
+<!ELEMENT aff (#PCDATA | label | %address-class; | %address-link; | %just-rendition; | break)* >
+<!ATTLIST  aff 
+	%common-attributes;
+	rid  IDREFS   #IMPLIED >
+
+<!-- role:  Title or role of a contributor (eg. editor-in-chief, chief scientist, photographer ... -->
+<!ELEMENT role (#PCDATA | %just-rendition;)* >
+<!ATTLIST  role %common-attributes;>
+
+
+<!-- author-notes -->
+<!-- Footnotes to authors or contributors. References are made using xref -->
+<!ELEMENT author-notes (label?, title?, (corresp | fn | p)+ ) >
+<!ATTLIST  author-notes 
+	id ID #IMPLIED 
+	rid  IDREFS  #IMPLIED
+    specific-use CDATA  #IMPLIED >
+
+<!-- corresponding author or contributor, to whom requests should be addressed -->
+<!ELEMENT corresp (#PCDATA | %just-rendition; | %address-link;)* >
+<!-- Discarded Elements: %address.class; | %label.class; | %phrase-content.class; -->
+<!ATTLIST  corresp  	%common-attributes; >
+
+<!-- pub-date -->
+<!-- Date of publication in one particular format -->
+<!ELEMENT pub-date %date-model; >
+<!ATTLIST  pub-date  
+	id ID #IMPLIED 
+    pub-type  CDATA  #IMPLIED
+    publication-format  CDATA  #IMPLIED
+    date-type  CDATA  #IMPLIED
+    iso-8601-date  CDATA  #IMPLIED >
+
+<!-- volume:  volume number, volume name or other identifier of an volume of a journal -->
+<!ELEMENT volume (#PCDATA | %just-rendition;)* >
+<!ATTLIST  volume  
+	%common-attributes;
+	seq CDATA  #IMPLIED >
+	
+<!ELEMENT volume-id (#PCDATA) >
+<!ATTLIST  volume-id  
+	%common-attributes;
+	pub-id-type CDATA  #IMPLIED
+	%might-link-atts; >
+
+<!-- issue:  issue number, volume name or other identifier of an issue of a volume -->
+<!ELEMENT issue (#PCDATA | %just-rendition;)* >
+<!ATTLIST  issue  
+	%common-attributes;
+	seq CDATA  #IMPLIED >
+
+<!ELEMENT issue-id (#PCDATA) >
+<!ATTLIST  isue-id  
+	%common-attributes;
+	pub-id-type CDATA  #IMPLIED
+	%might-link-atts; >
+
+
+<!-- fpage:  page number on which the article starts -->
+<!ELEMENT fpage (#PCDATA) >
+<!ATTLIST  fpage  
+	%common-attributes;
+	seq CDATA  #IMPLIED >
+<!-- lpage:  page number on which the article ends -->
+<!ELEMENT lpage (#PCDATA) >
+<!ATTLIST  lpage  
+	%common-attributes; >
+<!-- page-range:  additional information for discontinuous pages (e.g. 8-11, 14-19, 40) -->
+<!ELEMENT page-range (#PCDATA) >
+<!ATTLIST  page-range  
+	%common-attributes; >
+
+
+<!-- history of the document, such as received date and accepted date -->
+<!ELEMENT history (date)+ >
+<!ATTLIST history id ID #IMPLIED >
+
+<!ELEMENT  date  %date-model; >
+<!ATTLIST  date 
+            id ID #IMPLIED
+            date-type  CDATA #IMPLIED
+            publication-format  CDATA #IMPLIED
+            iso-8601-date  CDATA #IMPLIED
+            specific-use  CDATA #IMPLIED >
+
+
+<!-- permissions: hold the copyright information, license material, and similar metadata  -->
+<!ELEMENT  permissions (copyright-statement*, copyright-year*, copyright-holder*, license?) >
+<!ATTLIST  permissions id ID #IMPLIED >
+
+<!-- Copyright notice or statement. Within the statement the copyright year 
+	should be provided as text, if expected to be displayed -->
+<!ELEMENT copyright-statement (#PCDATA | %address-link; | %just-rendition;)* >
+<!ATTLIST  copyright-statement  %common-attributes; >
+
+<!ELEMENT copyright-year (#PCDATA) >
+<!ATTLIST  copyright-year  %common-attributes; >
+
+<!-- Name of the person or organization that holds the copyright -->
+<!ELEMENT copyright-holder (#PCDATA | institution)* >
+<!ATTLIST  copyright-holder  %common-attributes; >
+
+<!-- Name of a institution or organization such as a university or corporation -->
+ <!ELEMENT  institution (#PCDATA | %just-rendition; | %address-link; | break)* >
+ <!ATTLIST  institution  %common-attributes; >
+
+<!ELEMENT license (license-p*)>
+<!ATTLIST  
+			license  license-type  CDATA #IMPLIED
+			%might-link-atts; 
+>
+
+<!ELEMENT license-p (#PCDATA | %just-rendition; | ext-link )*>
+
+<!-- related-article:  links to a related article, accompanied by a brief description -->
+<!ELEMENT related-article (#PCDATA | %just-rendition;)* >
+<!-- Discarded Elements: %references.class;  -->
+<!ATTLIST  related-article 
+            id ID #IMPLIED
+            related-article-type  CDATA #IMPLIED
+            ext-link-type  CDATA #IMPLIED
+            vol  CDATA #IMPLIED
+            issue  CDATA #IMPLIED
+            page  CDATA #IMPLIED
+            specific-use  CDATA #IMPLIED 
+            %might-link-atts; >
+
+<!-- related-object:  links to a related object, accompanied by a brief description,
+				for example a related book, a related chapter or figure in a book -->
+<!ELEMENT related-object (#PCDATA | %just-rendition;)* >
+<!-- Discarded Elements: %references.class;  -->
+<!ATTLIST  related-object 
+            id ID #IMPLIED
+            link-type  CDATA #IMPLIED
+            ext-link-type  CDATA #IMPLIED
+            document-id  CDATA #IMPLIED
+            document-id-type  CDATA #IMPLIED
+            document-type  CDATA #IMPLIED
+            object-id  CDATA #IMPLIED
+            object-id-type  CDATA #IMPLIED
+            object-type  CDATA #IMPLIED
+            content-type  CDATA #IMPLIED
+            specific-use  CDATA #IMPLIED
+            %might-link-atts; >
+
+<!ELEMENT self-uri EMPTY >
+<!ATTLIST  self-uri 
+            content-type  CDATA #IMPLIED
+			%link-atts; >
+
+<!-- abstract:  short summary of the content of an article -->
+<!ELEMENT abstract (title?, p*) >
+<!ATTLIST  abstract 
+            id ID #IMPLIED
+            abstract-type  CDATA #IMPLIED
+            specific-use  CDATA #IMPLIED >
+
+<!-- kwd-group:  set of keywords used to describe a document -->
+<!ELEMENT kwd-group (title?, kwd+) >
+<!ATTLIST  kwd-group 
+            id ID #IMPLIED
+            kwd-group--type  CDATA #IMPLIED
+            specific-use  CDATA #IMPLIED >
+
+<!ELEMENT kwd (#PCDATA | %just-rendition;)* >
+<!ATTLIST  kwd 
+            id ID #IMPLIED
+            content-type  CDATA #IMPLIED >
+
+
+<!-- conference -->
+<!ELEMENT conference (conf-date | conf-name | conf-num | conf-loc | conf-theme | conf-acronym ) >
+<!ATTLIST  conference  	%common-attributes; >
+
+<!ELEMENT conf-date (#PCDATA) >
+<!ATTLIST  conf-date 
+	%common-attributes; 
+	iso-8601-date  CDATA #IMPLIED
+    calendar   CDATA  #IMPLIED >
+
+<!ELEMENT conf-name (#PCDATA | %just-rendition; )* >
+<!ATTLIST  conf-name  	%common-attributes; >
+
+<!ELEMENT conf-num (#PCDATA | %just-rendition; )* >
+<!ATTLIST  conf-num  	%common-attributes; >
+
+<!ELEMENT conf-loc (#PCDATA | %just-rendition; )* >
+<!ATTLIST  conf-loc  	%common-attributes; >
+
+<!ELEMENT conf-theme (#PCDATA | %just-rendition; )* >
+<!ATTLIST  conf-theme  	%common-attributes; >
+
+<!ELEMENT conf-acronym (#PCDATA | %just-rendition; )* >
+<!ATTLIST  conf-acronym  	%common-attributes; >
+
+
+<!-- counts:  holds all count information -->
+<!ELEMENT counts (count*) >
+<!ATTLIST  counts  id ID #IMPLIED >
+<!-- count:  count anything a publisher may wish to count in a document, 
+				The count-type attribute will name what is being counted, e. g. 
+				figures, tables, sections, contributors, images, equations, -->
+<!ELEMENT count EMPTY >
+<!ATTLIST  count  	
+	id ID #IMPLIED 
+    count-type   CDATA  #IMPLIED 
+    count  NMTOKEN #REQUIRED >
+
+<!ELEMENT custom-meta-group (custom-meta*)>
+<!ELEMENT custom-meta (meta-name, meta-value)>
+<!ELEMENT meta-name (#PCDATA)>
+<!ELEMENT meta-value (#PCDATA)>
+
+
+<!-- ============================================= -->
+<!-- MAIN ELEMENT  body  -->
+<!-- The main textual portion of the article that conveys the content -->
+<!-- ============================================= -->
+
+<!-- para-level:   Elements that may be used at the same structural level as a paragraph.-->
+<!ENTITY % para-level "p | array | boxed-text | chem-struct-wrap | code | fig | fig-group | 
+				graphic | media | preformat | table-wrap | disp-formula | disp-formula-group | def-list | 
+				list | tex-math | mml:math | related-article | ack | statement |disp-quote | verse-group" >
+
+<!-- JATS source
+<!ENTITY % para-level 
+				"%block-display.class; | %block-math.class; | %list.class; | %math.class; | 
+                %nothing-but-para.class; | %related-article.class; | %rest-of-para.class;"  >
+Note: There a major overlap between this parameter entity and that for the elements that are at the same level 
+as a paragraph. Block elements such as quotes and lists may appear either within a paragraph or at the same 
+level as a paragraph. Some incoming material will have restricted such elements to only inside a paragraph, 
+some incoming material will have restricted them to only outside a paragraph and some may allow them both. 
+Thus the DTD must allow for them to be in either or both.  -->
+
+<!ELEMENT body ((%para-level;)*, sec*)>
+<!-- Discarded Elements: sig-block? -->
+<!ATTLIST  body 
+	id ID #IMPLIED 
+	specific-use  CDATA  #IMPLIED >
+<!-- JATS source
+<!ENTITY % body-model   "((%para-level;)*, (%sec-level;)*, sig-block?)" >
+-->
+
+
+<!-- ============================================= -->
+<!-- SUB ELEMENT  p  (Paragraph)  -->
+<!--  The basic block-unit of textual information  -->
+<!-- ============================================= -->
+<!ELEMENT  p  (#PCDATA | %just-rendition; | %address-link; | array | boxed-text | chem-struct-wrap | 
+					chem-struct | code | fig-group | fig | graphic | inline-graphic | media | preformat | table-wrap | 
+					disp-formula | inline-formula | disp-formula-group | mixed-citation | def-list | list | tex-math | 
+					mml:math | abbrev | statement | disp-quote | verse-group | %simple-link; )* >
+<!ATTLIST  p  %common-attributes; >
+
+<!--  JATS source 
+<!ENTITY % p-elements   
+				"| %address-link.class; | %article-link.class; | %block-display.class; | %block-math.class; |
+                %citation.class; |  %emphasis.class; | %funding.class; |  %inline-math.class; |
+                %inline-display-noalt.class; | %list.class; | %math.class; | %phrase.class; | %rest-of-para.class; |
+                %simple-link.class; | %subsup.class;" > 
+p Expanded Content Model
+(#PCDATA | email | ext-link | uri | inline-supplementary-material | related-article | related-object | address | alternatives | array | boxed-text | chem-struct-wrap | code | fig | fig-group | graphic | media | preformat | supplementary-material | table-wrap | table-wrap-group | disp-formula | disp-formula-group | citation-alternatives | element-citation | mixed-citation | nlm-citation | bold | fixed-case | italic | monospace | overline | roman | sans-serif | sc | strike | underline | ruby | award-id | funding-source | open-access | chem-struct | inline-formula | inline-graphic | private-char | def-list | list | tex-math | mml:math | abbrev | milestone-end | milestone-start | named-content | styled-content | disp-quote | speech | statement | verse-group | fn | target | xref | sub | sup)*
+Discarded Elements: 
+(inline-supplementary-material | related-article | related-object | address | alternatives | supplementary-material | table-wrap-group | citation-alternatives | element-citation | nlm-citation | award-id | funding-source | open-access | private-char | milestone-end | milestone-start | named-content | styled-content | disp-quote | speech )*
+-->
+
+
+<!-- array: used to define table-like (columnar) material.  
+Uses the XHTML table body or a graphic to express the rows and columns. -->
+<!ELEMENT array (label?, ( alt-text | %address-link; )*, (( graphic | media )* | tbody )) >
+<!ATTLIST  array 
+	%common-attributes; 
+	orientation (portrait | landscape)  "portrait" >
+<!-- JATS source
+<!ENTITY % array-model  "(label?,  (%access.class; | %address-link.class;)*, 
+				( (%just-base-display.class;)* | %tbody.class; ), (%display-back-matter.class;)* )"  >
+<!ENTITY % access.class "alt-text | long-desc" >
+<!ENTITY % just-base-display.class  "alternatives | graphic | media"  >
+<!ENTITY % display-back-matter.class  "attrib | permissions"  >
+-->
+
+<!-- boxed-text:  outside the flow of the narrative text, 
+	for example sidebar, marginalia, caution or note box, etc -->
+<!ELEMENT boxed-text (object-id*, label?, caption?, p*) >
+<!ATTLIST boxed-text 
+	%common-attributes; 
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float" >
+<!--  JATS source
+<!ENTITY % boxed-text-model
+                "((%id.class;)*, sec-meta?, label?, caption?, (%para-level;)*, (%sec-level;)*,
+                (%sec-back-matter-mix;)*, (%display-back-matter.class;)* )"  >
+-->
+
+<!--  A chemical expression, reaction, equation etc. that is set apart within the text -->
+<!ELEMENT chem-struct-wrap (object-id*, label?, caption?, abstract*, kwd-group*,
+				(chem-struct | code | graphic | media | preformat | textual-form )+ ) >
+<!ATTLIST chem-struct-wrap 
+	%common-attributes; 
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float" >
+<!-- JATS source
+<!ENTITY % chem-struct-wrap-model
+                "((%id.class;)*, label?, (%caption.class;)?, (%abstract.class;)*, (%kwd-group.class;)*,
+                (%access.class; | %address-link.class;)*, (%inside-chem-struct-wrap.class;)+,
+                (%display-back-matter.class;)* )"          >
+<!ENTITY % inside-chem-struct-wrap.class
+                "alternatives | chem-struct | code | graphic | media | preformat | textual-form" >
+-->
+<!ELEMENT chem-struct (#PCDATA | %just-rendition; | break | alt-text | label | ext-link |
+				tex-math | mml:math | array | code | graphic | media | preformat | %simple-link; )* >
+<!ATTLIST  chem-struct 	
+	%common-attributes; 
+	%might-link-atts; >
+<!-- JATS source
+<!ENTITY % chem-struct-elements
+                "| %access.class; | %address-link.class; | %break.class; | %emphasis.class; | 
+				%label.class; | %list.class; | %math.class; | %phrase-content.class; |
+                %simple-display.class; | %simple-link.class; | %subsup.class; " >
+<!ENTITY % simple-display.class  "alternatives | array | code | graphic | media | preformat" >
+<!ENTITY % simple-link.class "fn | target | xref" >
+-->
+
+
+<!-- code: container element for technical content such as programming language code, 
+    pseudo-code, schemas, or a markup fragment. This material may be preformatted text, 
+	with or without emphasis, or it may be an external link to a binary executable file -->
+<!ELEMENT code (#PCDATA | %just-rendition; | abbrev | ext-link | %simple-link; )* >
+<!ATTLIST code 
+	id ID #IMPLIED 
+	specific-use CDATA #IMPLIED 
+	code-type CDATA #IMPLIED 
+	code-version CDATA #IMPLIED 
+	executable CDATA #IMPLIED 
+	language CDATA #IMPLIED 
+	language-version CDATA #IMPLIED 
+	platforms CDATA #IMPLIED 
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float" 
+	xml:space (default | preserve)     #FIXED "preserve" >
+<!--  JATS source
+<!ENTITY % code-elements
+                "| %address-link.class; | %emphasis.class; | %phrase.class; | 
+                %simple-link.class; | %subsup.class;"      >
+-->
+
+
+<!-- fig-group: Used for a group of figures that must be displayed together -->
+<!ELEMENT fig-group (label?, caption?, abstract*, kwd-group*, (alt-text | ext-link)*, (fig | graphic | media)* ) >
+<!ATTLIST fig-group 
+	%common-attributes; 
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float" >
+<!-- JATS source 
+<!ENTITY % fig-group-model
+                "(label?, (%caption.class;)?, (%abstract.class;)*, (%kwd-group.class;)*,
+                (%access.class; | %address-link.class;)*, (%fig-display.class; | %just-base-display.class;)* )" >
+-->
+<!-- fig:  block of graphic or textual material that is identified as a "Figure", usually with
+	a caption and a label such as "Figure".The content of a Figure need not be graphical in nature -->
+<!ELEMENT fig (object-id*, label?, caption?, abstract*, kwd-group*, (alt-text | ext-link)*, 
+					(p | disp-formula | disp-formula-group | chem-struct-wrap | table-wrap | def-list | list | %simple-display; )*, attrib* ) >
+<!ATTLIST fig 
+	id ID #IMPLIED 
+	fig-type CDATA #IMPLIED 
+	specific-use CDATA #IMPLIED 
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float" >
+<!-- JATS source 
+<!ENTITY % fig-model   
+				"((%id.class;)*, label?, (%caption.class;)*, (%abstract.class;)*, (%kwd-group.class;)*,
+				(%access.class; | %address-link.class;)*, (%block-math.class; | %chem-struct-wrap.class; |
+                %intable-para.class; | %just-table.class; | %just-para.class; | %list.class; | %simple-display.class;)*,
+                (%display-back-matter.class;)* )" >
+-->
+<!-- JATS-Extension -->
+<!ELEMENT attrib (#PCDATA | %just-rendition; | %simple-link; | ext-link | inline-graphic | inline-formula | break )* >
+
+<!-- graphic: An external file that holds a picture, illustration, etc.
+    The "content" of the graphic element is not the object, but merely information about the object. 
+	The "href" attribute points to the file containing the objec -->
+<!ELEMENT graphic (object-id | alt-text | label | caption | abstract | kwd-group)* >
+<!ATTLIST  graphic 
+	%common-attributes; 
+	mimetype  CDATA  #IMPLIED
+	mime-subtype  CDATA  #IMPLIED
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float"
+	%link-atts; >
+<!-- JATS source 
+<!ENTITY % graphic-model
+                "(%access.class; | %abstract.class; | %address-link.class; | %caption.class; |
+                %id.class; | %kwd-group.class; | %label.class; | %display-back-matter.class;)* " >
+-->
+
+<!-- inline-graphic: A small graphic such as an icon or a small picture symbol 
+	that is displayed or set in the same line as the text -->
+<!ELEMENT inline-graphic (alt-text?) >
+<!ATTLIST  inline-graphic 
+	%common-attributes; 
+	baseline-shift  CDATA  #IMPLIED
+	mimetype  CDATA  #IMPLIED
+	mime-subtype  CDATA  #IMPLIED
+	%link-atts; >
+
+<!-- media: An external file that holds a media object, such as an animation or a movie
+	The "href" attribute points to the file containing the objec -->
+<!ELEMENT media (object-id | alt-text | label | caption | abstract | kwd-group)* >
+<!ATTLIST  media 
+	%common-attributes; 
+	mimetype  CDATA  #IMPLIED
+	mime-subtype  CDATA  #IMPLIED
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float"
+	%link-atts; >
+
+
+<!-- table-wrap:  Used to hold a complete table, that is, not only rows and columns, 
+	but also the table captions, table footnotes, alternative descriptions for accessibility, etc -->
+<!ELEMENT table-wrap (object-id*, label?, caption?, abstract*, kwd-group*, 
+				 (alt-text | %address-link;)*, table*, (table-wrap-foot | attrib)*) >
+<!ATTLIST  table-wrap 
+	%common-attributes; 
+	orientation (portrait | landscape)  "portrait"
+	position (anchor | background | float | margin)   "float" >
+<!--  JATS source
+<!ENTITY % table-wrap-model
+            "((%id.class;)*, label?, (%caption.class;)?, (%abstract.class;)*, (%kwd-group.class;)*,
+            (%access.class; | %address-link.class;)*, (%inside-table-wrap;)*, (%table-foot.class; |
+            %display-back-matter.class;)* )"  >
+<!ENTITY % inside-table-wrap  "%intable-para.class; | %list.class; | 
+			%simple-intable-display.class; | %table.class;"  >
+<!ENTITY % table-foot.class  "table-wrap-foot"  >
+-->
+<!ELEMENT table-wrap-foot (title?, (p | fn-group | fn)* ) >
+<!ATTLIST  table-wrap-foot  id ID  #IMPLIED >
+
+
+<!-- disp-formula-group:  -->
+<!ELEMENT disp-formula-group (label?, caption?, abstract*, kwd-group*, 
+				(alt-text | %address-link;)*, (disp-formula | disp-formula-group)* ) >
+<!ATTLIST  disp-formula-group %common-attributes; >
+
+<!-- disp-formula:  -->
+<!ELEMENT 	disp-formula (#PCDATA | %just-rendition; | break | label | alt-text | abstract | kwd-group | 
+				%address-link; | inline-graphic | inline-formula | tex-math | mml:math | %simple-display;)* >
+<!ATTLIST  disp-formula %common-attributes; >
+<!-- JATS source
+<!ENTITY % disp-formula-elements
+                "| %access.class; | %abstract.class; | %address-link.class; | %break.class; | %emphasis.class; |
+                %inline-display-noalt.class; | %inline-math.class; | %kwd-group.class; | %label.class; | 
+				%phrase-content.class; | %math.class; | %simple-display.class; | %subsup.class;" >
+<!ENTITY % inline-math.class "chem-struct | inline-formula" >
+<!ENTITY % math.class   "tex-math | mml:math"  >
+-->
+<!ELEMENT inline-formula (#PCDATA | %just-rendition; | inline-graphic | tex-math | mml:math )* >
+<!ATTLIST  inline-formula %common-attributes; >
+
+<!-- tex-math:  Used to hold encoded math, expressed in TeX -->
+<!-- mml:math:  Declared in mathml3.dtd -->
+<!ELEMENT tex-math (#PCDATA) >
+<!ATTLIST  tex-math 
+	%common-attributes; 
+	notation   NOTATION (LaTeX | tex | TEX | TeX)  #IMPLIED>
+
+
+<!-- statement:  Theorem, Lemma, Proof, Postulate, Hypothesis, Proposition, Corollary, 
+	or  other formal statement, identified as such with a label, usually made typographically
+    distinct from the surrounding text -->
+<!ELEMENT statement (label?, title?, abstract*, kwd-group, p*, statement) >
+<!ATTLIST statement  %common-attributes; >
+
+<!ELEMENT verse-group (label?, title?, subtitle?, (verse-line | verse-group)+) >
+<!ATTLIST verse-group  %common-attributes; >
+<!-- verse-line: song, poem, or verse. No attempt has been made
+    to retain the look or visual form of the original  -->
+<!ELEMENT verse-line (#PCDATA | %just-rendition; | %simple-link; )* >
+<!ATTLIST verse-line  %common-attributes; >
+
+
+
+<!-- ============================================= -->
+<!-- SUB ELEMENT  sec  (Section)  -->
+<!-- sec: model for a section with title and complex content -->
+<!-- ============================================= -->
+<!ELEMENT  sec  (sec-meta?, label?, title, (%para-level;)*, sec*, (notes | fn-group | glossary | ref-list)* ) >
+<!ATTLIST  sec    
+	id ID #IMPLIED 
+    sec-type   CDATA  #IMPLIED 
+    specific-use   CDATA  #IMPLIED >
+
+<!-- sec-meta:  sections could have different authors and different topics -->
+<!ELEMENT  sec-meta  (contrib-group*, abstract*, kwd-group*)  >
+<!ATTLIST  sec-meta   id ID #IMPLIED  >
+
+<!-- JATS source 
+<!ENTITY % sec-model    "(sec-meta?, ( (label, title?) | title ),
+                (%para-level;)*, (%sec-level;)*,  (%sec-back-matter-mix;)* )"  >
+<!ENTITY % sec-meta-model
+                "((%contrib-group.class;)*, (%abstract.class;)*, (%kwd-group.class;)*,  permissions?)" >
+<!ENTITY % sec-back-matter-mix  "%front-back.class; | %sec-back.class;"  >
+<!ENTITY % sec-back.class   "fn-group | glossary |  ref-list"  >
+
+CONTENT MODEL FOR AN UNTITLED SECTION
+<!ENTITY % sec-opt-title-model   "(sec-meta?, label?, title?, 
+				(%para-level;)*, (%sec-level;)*,  (%sec-back-matter-mix;)* )"  >
+-->
+
+
+
+
+<!-- ============================================= -->
+<!-- MAIN ELEMENT  back  -->
+<!-- Supporting material, e.g. appendices and acknowledgments -->
+<!-- ============================================= -->
+<!ELEMENT back (title*, (ack | app-group | bio | fn-group | glossary | ref-list | notes)* ) >
+<!ATTLIST  back id ID #IMPLIED >
+
+<!-- JATS source
+<!ENTITY % back-model   "(label?, title*, (%doc-back-matter-mix;)* )">
+<!ENTITY % doc-back-matter-mix "%back.class; | %front-back.class; | %sec.class;" >
+<!ENTITY % back.class   "ack | app-group | bio | fn-group | glossary |  ref-list" >
+<!ENTITY % front-back.class  "notes"  >
+-->
+
+<!-- ack: acknowledgements  --> 
+<!ELEMENT ack (label?, title?, p*, ref-list* ) >
+<!ATTLIST ack  %common-attributes; >
+<!--   JATS source 
+<!ENTITY % ack-model    "(label?, title?, (%abstract.class;)*, (%kwd-group.class;)*,
+                   (%just-para.class;)*, (%sec.class;)*, (%ref-list.class;)* )"  >
+-->
+
+<!-- app-group:  Appendix Group --> 
+<!ELEMENT app-group (title?, p*, app*, ref-list* ) >
+<!ATTLIST  app-group %common-attributes; >
+
+<!-- app:  Appendix  --> 
+<!ELEMENT app  (title, p*) >
+<!ATTLIST  app %common-attributes; >
+<!--  JATS source
+<!ENTITY % app-group-model  "(label?, title?, (%abstract.class;)*, (%kwd-group.class;)*,
+                    (%para-level;)*, (%app.class; | %ref-list.class;)*)"  >
+<!ENTITY % app-model    "(%sec-model;, permissions?)"   >
+-->
+
+<!-- bio:  Short biography of a person, usually the author --> 
+<!ELEMENT bio (title?, p*) >
+<!ATTLIST  bio 
+	%common-attributes; 
+	rid  IDREFS  #IMPLIED >
+
+
+<!-- fn-group:  may appear at the end of an Article or Table --> 
+<!ELEMENT fn-group (title?, fn+) >
+<!ATTLIST  fn-group %common-attributes; >
+<!--  footnote: Additional information concerning material in a particular location in the text -->
+<!ELEMENT fn (label?, p+) >
+<!ATTLIST  fn 
+	id ID #IMPLIED 
+	fn-type  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED
+	symbol  CDATA  #IMPLIED >
+
+
+<!-- glossary: Glossary or list of definitions. Typically the content will be one or more def-list  --> 
+<!ELEMENT glossary (title?, (p | def-list)*, glossary*) >
+<!ATTLIST  glossary %common-attributes; >
+
+
+<!-- ref-list: List of references (citations) for the article. Often called "References", "Bibliography" or
+	"Additional Reading". No distinction is made between cited references and suggested references  --> 
+<!ELEMENT ref-list (title?, p*, ref*, ref-list* ) >
+<!ATTLIST  ref-list %common-attributes; >
+
+<!-- ref:  One item in a bibliographic list, typically a citation describing a referenced work -->
+<!ELEMENT ref  (label?, (element-citation | mixed-citation | notes)+ ) >
+<!ATTLIST  ref  %common-attributes; >
+<!--  JATS source
+<!ENTITY % ref-model    "(label?,
+                         (%citation.class; | %note.class;)+ )" >
+
+For element-citation and mixed-citation see Links and References
+-->
+
+<!-- notes:  may appear at the end of an Article or Table --> 
+<!ELEMENT notes (title?, fn-group?, p*) >
+<!ATTLIST  notes 
+	id ID #IMPLIED 
+	notes-type  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED >
+
+
+
+
+<!-- ============================================= -->
+<!-- MAIN ELEMENT  floats-group  -->
+<!-- 	Hold the floating objects that occur within an article. Some publishers 
+		like to collect all these floating objects (figures, tables, text boxes, 
+		graphics, etc.) together at the end of the document -->
+<!-- ============================================= -->
+<!-- Main-Element  floats-group  -->
+<!ELEMENT floats-group (boxed-text | chem-struct-wrap | code | fig | fig-group | graphic | media | 
+					preformat | table-wrap)* >
+<!ATTLIST  floats-group id ID #IMPLIED >
+
+<!--  JATS source
+<!ENTITY % floats-display.class
+               "alternatives | boxed-text | chem-struct-wrap | code | fig | fig-group | graphic | media | 
+				preformat | supplementary-material | table-wrap | table-wrap-group" -->
+
+
+
+<!-- ============================================= -->
+<!--  Discarded Main Elements -->
+<!-- ============================================= -->
+<!-- ELEMENT sub-article ANY-Model -->
+<!-- ELEMENT response ANY-Model -->
+
+
+
+
+<!-- ============================================= -->
+<!-- COMMON ELEMENTS -->
+<!-- 	Emphasize-Elements -->
+<!-- 	Text Formats -->
+<!-- 	Date -->
+<!-- 	Title, Label and Caption -->
+<!-- 	Link and Ref -->
+<!-- ============================================= -->
+
+<!-- Emphasize-Elements -->
+<!-- ============================================= -->
+<!ELEMENT bold (#PCDATA | %just-rendition; | inline-formula )* >
+<!ELEMENT fixed-case (#PCDATA | %just-rendition;)* >
+<!ELEMENT italic (#PCDATA | %just-rendition;)* >
+<!ELEMENT monospace (#PCDATA | %just-rendition;)* >
+<!ELEMENT overline (#PCDATA | %just-rendition;)* >
+<!ELEMENT roman (#PCDATA | %just-rendition;)* >
+<!ELEMENT sans-serif (#PCDATA | %just-rendition;)* >
+<!ELEMENT strike (#PCDATA | %just-rendition;)* >
+<!ELEMENT sc (#PCDATA | %just-rendition;)* >
+<!ELEMENT underline (#PCDATA | %just-rendition;)* >
+<!ELEMENT sub (#PCDATA | %just-rendition;)* >
+<!ELEMENT sup (#PCDATA | %just-rendition;)* >
+<!ELEMENT break EMPTY >
+<!ELEMENT hr EMPTY >
+
+
+<!-- Text Formats -->
+<!-- ============================================= -->
+
+<!-- alt-text:  short phrase used for accessibility reasons,  
+	alt-text may be used to explain a figure or graphic (hover help?) -->
+<!ELEMENT  alt-text  (#PCDATA) >
+<!ATTLIST alt-text %common-attributes; >
+
+<!-- textual-form: alternative text description to, for example, graphics -->
+<!ELEMENT  textual-form (#PCDATA | %just-rendition;)* >
+<!ATTLIST textual-form 
+	id ID #IMPLIED
+	specific-use  CDATA  #IMPLIED >
+<!--  JATS source 
+<!ENTITY % textual-form-elements  "| %emphasis.class; | %inline-display-noalt.class; |
+                %math.class; | %phrase-content.class; | %subsup.class;"    >
+-->
+
+<!-- Used for preformatted text such as computer code in which whitespace, 
+	such as tabs, line feeds, and spaces, should be preserved -->
+<!ELEMENT  preformat  (#PCDATA | %just-rendition; )* >
+<!ATTLIST preformat 
+	id ID #IMPLIED
+	specific-use  CDATA  #IMPLIED
+	preformat-type  CDATA  #IMPLIED
+	orientation   (portrait | landscape)  "portrait"
+	position   (anchor | background | float | margin)   "float"
+	xml:space (default | preserve)  "preserve" >
+<!--  JATS source
+<!ENTITY % preformat-elements
+                "| %access.class; | %address-link.class; | %display-back-matter.class; |
+                %emphasis.class; | %id.class; | %phrase.class; | %subsup.class;"  >
+-->
+
+
+<!-- abbrev:  Used to identify an abbreviation or acronym -->
+<!ELEMENT  abbrev  (#PCDATA | def)* >
+<!ATTLIST abbrev 
+	%common-attributes; 
+	alt  CDATA  #IMPLIED >
+
+<!-- def:  definition (def-list) or expansion of an abbreviation or acronym -->
+<!ELEMENT def (p+) >
+<!ATTLIST def 
+	id  ID  #IMPLIED	
+	specific-use  CDATA  #IMPLIED
+	rid   IDREFS #IMPLIED >
+
+<!-- JATS-Extension -->
+<!ELEMENT disp-quote (p*, attrib?) >
+
+
+<!-- Date -->
+<!-- ============================================= -->
+
+<!-- numeric value of a day in two digits as it would be stated in the 
+	international date format YYYY-MM-DD, for example "03", "25". -->
+<!ELEMENT day (#PCDATA) >
+<!ATTLIST day %common-attributes; >
+
+<!-- month may contain a full month "December", an abbreviation "Dec", 
+	or, preferably, a numeric month such as "12" -->
+<!ELEMENT month (#PCDATA) >
+<!ATTLIST month %common-attributes; >
+
+<!-- Year of publication, which should be expressed as a 4-digit number -->
+<!ELEMENT year (#PCDATA) >
+<!ATTLIST year 
+	%common-attributes;
+	iso-8601-date  CDATA  #IMPLIED >
+
+<!-- Season of publication, such as "Spring, Summer, Fall, Winter" -->
+<!ELEMENT season (#PCDATA) >
+<!ATTLIST season %common-attributes; >
+
+<!-- representation of the date as a string; usually used for dates for which 
+	months and years are not given, but may be used for any date as a string 
+	(i.e., "January, 2001" "Fall 2001" "March 11, 2001") -->
+<!ELEMENT string-date (#PCDATA | day | era | month | season | year)* >
+<!ATTLIST string-date 
+	%common-attributes; 
+	iso-8601-date  CDATA  #IMPLIED >
+
+
+
+
+<!-- Title, Label and Caption -->
+<!-- ============================================= -->
+
+<!-- title:  heading for a structural element such as a Section, Figure, etc -->
+<!ELEMENT title (#PCDATA | %just-rendition; | %simple-link; | inline-formula | break)* >
+<!ATTLIST  title %common-attributes; >
+
+<!-- label: prefix and number that comes before the caption of a Figure, i.e. "Figure 3. " -->
+<!ELEMENT label (#PCDATA | %just-rendition; | %simple-link; | inline-formula )* >
+<!ATTLIST  label  id ID #IMPLIED >
+
+<!-- caption:  Wrapper element for the textual description of figures, tables, etc. -->
+<!ELEMENT caption (title?, p*) >
+<!ATTLIST  caption %common-attributes; >
+
+
+
+<!-- Links and References -->
+<!-- ============================================= -->
+<!ENTITY % address-class  "addr-line | city | country | institution | phone | postal-code | state" >
+
+<!-- Adress Elements -->
+  <!ELEMENT  addr-line (#PCDATA) >
+<!ELEMENT  city (#PCDATA) >
+ <!ELEMENT  country (#PCDATA) >
+ <!ELEMENT  phone (#PCDATA) >
+ <!ELEMENT  postal-code (#PCDATA) >
+ <!ELEMENT  state (#PCDATA) >
+ 
+<!-- Adress Link Elements -->
+<!ELEMENT  email (#PCDATA) > 
+<!ATTLIST  email  
+	%common-attributes; 
+	%link-atts; >
+
+<!ELEMENT  ext-link (#PCDATA) > 
+<!ATTLIST  ext-link 
+	id ID #IMPLIED 
+	ext-link-type  CDATA  #IMPLIED
+	assigning-authority  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED 
+	%link-atts; >
+
+<!ELEMENT  uri (#PCDATA) > 
+<!ATTLIST  uri  %common-attributes; >
+
+<!-- object-id (id.class): used to record an identifier such as DOI
+    for an interior element such as abstract or figure -->
+<!ELEMENT  object-id (#PCDATA) > 
+<!ATTLIST  object-id 
+	%common-attributes; 
+	pub-id-type  CDATA  #IMPLIED >
+
+<!-- xref: Used for any kind of internal article referencing. The content of the reference
+    (if present) will be displayed as the link. This element may be used to point to any
+    element that takes an "id" attribute. The "ref-type" attribute may be used to name
+    the element or type of object to which the xref is pointing -->
+<!ELEMENT  xref (#PCDATA | %just-rendition; )* > 
+<!ATTLIST  xref 
+	id ID #IMPLIED 
+	ref-type  (aff | app | author-notes | bibr | boxed-text | chem | collab | contrib | corresp | disp-formula | fig | figure | 
+	fn | kwd | list | plate | scheme | sec | statement | supplementary-material | table | table-fn | other)   #IMPLIED
+	rid   IDREFS  #IMPLIED
+	specific-use  CDATA  #IMPLIED >
+
+<!-- target: May be placed anywhere within textual material such as a paragraph 
+	to provide a location (anchor) to which a cross reference can point -->
+<!ELEMENT  target (#PCDATA | %just-rendition; )* > 
+<!ATTLIST  target 
+	id ID #IMPLIED 
+	target-type  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED >
+
+
+<!-- citations:  element-citation, mixed-citation -->
+<!-- JATS source 
+<!ENTITY % citation.class  "citation-alternatives | element-citation | mixed-citation" >
+<!ENTITY % citation-elements
+                "%emphasis.class; | %inline-display.class; | %inline-math.class; | 
+                %label.class; | %phrase.class; | %references.class; |  %subsup.class;" >
+<!ENTITY % references.class
+            "annotation | article-title | chapter-title | collab | collab-alternatives | comment | 
+            conf-acronym | conf-date | conf-loc | conf-name | conf-sponsor | data-title | date | 
+            date-in-citation | day | edition |  email | elocation-id | etal | ext-link | fpage | gov | 
+            institution | institution-wrap | isbn | issn | issn-l | issue | issue-id | issue-part | issue-title |
+            lpage | month | name | name-alternatives | object-id | page-range | part-title |patent | 
+            person-group | pub-id | publisher-loc | publisher-name | role | season | series | size | 
+            source | std | string-name | supplement | trans-source | trans-title | uri | version |
+            volume | volume-id | volume-series | year"  >
+-->
+<!ENTITY % references.class
+            "article-title | chapter-title | collab | gov | comment | conf-acronym | conf-date | conf-loc | conf-name | 
+            date | day | month | year | edition | email | ext-link | institution | isbn | issn | issue | issue-id | 
+            issue-title | name | object-id | person-group | etal | pub-id | publisher-loc | publisher-name | 
+            series | source | supplement | uri | fpage | lpage | page-range | version | volume" >
+
+<!-- mixed-citation:  A citation is a description of a work, such as a journal article or book, 
+	that is cited in the text of the article. This mixed-citation element is completely loose, 
+	with text, punctuation, spacing, and any of the citation elements in any order-->
+<!ELEMENT  mixed-citation (#PCDATA | %just-rendition; | inline-graphic | chem-struct | 
+					inline-formula | label | abbrev | %references.class;  )* >
+<!ATTLIST  mixed-citation 
+	id ID #IMPLIED 
+	publication-type  CDATA  #IMPLIED
+	publisher-type  CDATA  #IMPLIED
+	publication-format  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED 
+	%might-link-atts; >
+
+<!-- element-citation:  This citation model contains element-only content, with elements 
+	in any order as many times as needed. This citation is intended for use in capturing
+    a publisher's specific element order.-->
+<!ELEMENT  element-citation (%emphasis.class; | inline-graphic | chem-struct | 
+					inline-formula | label | abbrev | %references.class;  )* >
+<!ATTLIST  element-citation 
+	id ID #IMPLIED 
+	publication-type  CDATA  #IMPLIED
+	publisher-type  CDATA  #IMPLIED
+	publication-format  CDATA  #IMPLIED
+	specific-use  CDATA  #IMPLIED 
+	%might-link-atts; >
+
+<!ELEMENT person-group (#PCDATA | name | collab | etal )* >
+<!ATTLIST person-group 
+	id ID #IMPLIED 
+	person-group-type CDATA  #IMPLIED 
+	specific-use CDATA  #IMPLIED >
+
+<!ELEMENT series (#PCDATA | %just-rendition; )* >
+<!ATTLIST  series  %common-attributes; >
+
+<!ELEMENT source (#PCDATA | %just-rendition; | %address-link; )* >
+<!ATTLIST  source  %common-attributes; >
+
+<!ELEMENT supplement (#PCDATA | %just-rendition; | %address-link; )* >
+<!ATTLIST  supplement  %common-attributes; >
+
+<!ELEMENT pub-id (#PCDATA) >
+<!ATTLIST  pub-id  
+	id ID #IMPLIED 
+	pub-id-type (accession | ark | art-access-id | arxiv | coden | doaj | doi | handle | isbn | manuscript | 
+					medline | other | pii | pmcid |  pmid | publisher-id | sici | std-designation) #IMPLIED 
+	assigning-authority CDATA  #IMPLIED 
+	specific-use CDATA  #IMPLIED >
+
+<!ELEMENT collab (#PCDATA | %just-rendition; | institution )* >
+<!ATTLIST  collab  
+	id ID #IMPLIED 
+	collab-type CDATA  #IMPLIED 
+	symbol CDATA  #IMPLIED 
+	specific-use CDATA  #IMPLIED >
+
+<!ELEMENT gov (#PCDATA | %just-rendition; )* >
+<!ATTLIST  gov  %common-attributes; >
+
+<!ELEMENT etal (#PCDATA | %just-rendition; )* >
+<!ATTLIST  etal  
+	id ID #IMPLIED 
+	specific-use CDATA  #IMPLIED >
+
+<!-- JATS-Extension -->
+<!ELEMENT comment (#PCDATA | %just-rendition; | ext-link )* >
+<!ELEMENT edition (#PCDATA | %just-rendition; )* >
+
+
+
+
+<!-- ============================================= -->
+<!-- Table -->
+<!-- ============================================= -->
+
+<!ENTITY % align "align ( left | center | right | justify )  #IMPLIED" >
+<!ENTITY % valign "valign ( top | middle | bottom )  #IMPLIED" >
+<!ENTITY % inside-cell  "%emphasis.class; | break | hr | p | %address-link; | %simple-link; |
+				disp-formula | disp-formula-group | inline-formula | mixed-citation | inline-graphic | 
+				abbrev | list | %simple-display; " >
+
+<!-- JATS source
+<!ENTITY % inside-cell  "%address-link.class; |  %appearance.class; | %article-link.class; |
+                %block-math.class; | %break.class; | %citation.class; | %emphasis.class; |
+                %inline-math.class; | %list.class; | %math.class; | %nothing-but-para.class; |
+                %phrase.class; | %simple-display.class; | %inline-display-noalt.class; |
+                %simple-link.class; | %subsup.class;" >
+<!ENTITY % phrase.class "abbrev | milestone-end | milestone-start | named-content | styled-content" >
+<!ENTITY % simple-display.class  "alternatives | array | code | graphic | media | preformat" >
+<!ENTITY % inline-display.class  "alternatives | inline-graphic | private-char" >
+<!ENTITY % block-math.class "disp-formula | disp-formula-group" >
+<!ENTITY % inline-math.class "chem-struct | inline-formula" >
+<!ENTITY % math.class   "tex-math | mml:math"  >
+<!ENTITY % inline-formula-elements "| %emphasis.class; | %inline-display.class; |
+                %inline-math.class; | %math.class; | %phrase-content.class; | %subsup.class;"    >
+<!ENTITY % disp-formula-elements  "| %access.class; | %abstract.class; | %address-link.class; |
+                %break.class; | %emphasis.class; | %inline-display-noalt.class; | %inline-math.class; | 
+				%kwd-group.class; | %label.class; | %phrase-content.class; | %math.class; |  
+				%simple-display.class; | %subsup.class;" >
+-->
+
+<!ELEMENT table ( caption?, (col* | colgroup*), ((thead?, tfoot?, tbody+) | tr+))  >
+<!ATTLIST table 
+	id ID #IMPLIED 
+	width CDATA #IMPLIED 
+	border CDATA #IMPLIED 
+	frame  ( void | above | below | hsides | lhs | rhs | vsides | box | border ) #IMPLIED 
+	rules  ( none | groups | rows | cols | all ) #IMPLIED
+	cellspacing CDATA #IMPLIED 
+	cellpadding CDATA #IMPLIED>
+
+<!ELEMENT colgroup (col*) >
+<!ATTLIST colgroup  
+	id ID #IMPLIED 
+	span CDATA #IMPLIED
+	width CDATA #IMPLIED
+	%align;
+	%valign; >
+
+<!ELEMENT col EMPTY >
+<!ATTLIST col  
+	id ID #IMPLIED 
+	span CDATA #IMPLIED
+	width CDATA #IMPLIED
+	%align;
+	%valign; >
+
+
+<!ELEMENT thead (tr+) >
+<!ATTLIST thead  
+	id ID #IMPLIED 
+	%align;
+	%valign; >
+
+<!ELEMENT tfoot (tr+) >
+<!ATTLIST tfoot  
+	id ID #IMPLIED 
+	%align;
+	%valign; >
+
+<!-- Use multiple tbody sections when rules are needed between groups of table rows -->
+<!ELEMENT tbody (tr+) >
+<!ATTLIST tbody  
+	id ID #IMPLIED 
+	%align;
+	%valign; >
+
+<!ELEMENT tr (th | td)+ >
+<!ATTLIST tr  
+	id ID #IMPLIED 
+	%align;
+	%valign; >
+
+<!ELEMENT th (#PCDATA | %inside-cell;)* >
+<!ATTLIST th  
+	id ID #IMPLIED 
+    rowspan  CDATA   '1'
+    colspan  CDATA   '1'
+	%align;
+	%valign;  >
+
+<!ELEMENT td (#PCDATA | %inside-cell;)* >
+<!ATTLIST td  
+	id ID #IMPLIED 
+    rowspan  CDATA   '1'
+    colspan  CDATA   '1'
+	%align;
+	%valign;  >
+
+
+
+<!-- ============================================= -->
+<!-- List -->
+<!-- ============================================= -->
+
+<!-- def-list:   -->
+<!ELEMENT def-list (label?, title?, term-head?, def-head?, def-item*, def-list*) >
+<!ATTLIST  def-list  
+	id  ID  #IMPLIED 
+	list-type  (decimal | lower-roman | lower-alpha | none)  "decimal" 
+	prefix-word  CDATA  #IMPLIED
+	list-content  CDATA  #IMPLIED
+	continued-from  IDREF  #IMPLIED
+	specific-use  CDATA  #IMPLIED	>
+
+<!-- term-head:  Title over the first (term) column of a two-part list -->
+<!ELEMENT term-head (#PCDATA | %just-rendition; )* >
+<!ATTLIST  term-head  id  ID  #IMPLIED >
+
+<!-- def-head:  Title over the second (definition) column of a two-part list -->
+<!ELEMENT def-head (#PCDATA | %just-rendition; )* >
+<!ATTLIST  def-head  id  ID  #IMPLIED >
+
+<!-- def-item:  term and definition pair inside a definition or two-part list -->
+<!ELEMENT def-item (label?, term, def*) >
+<!ATTLIST  def-item  
+	id  ID  #IMPLIED 
+	specific-use  CDATA  #IMPLIED	>
+
+<!-- term:  word, phrase, picture that occupies the first column of a definition 
+	and is the subject of the definition or description -->
+<!ELEMENT term (#PCDATA | %just-rendition; | %simple-display; | disp-formula | disp-formula-group )* >
+<!ATTLIST  term  
+	id  ID  #IMPLIED 
+	rid  IDREFS  #IMPLIED
+	specific-use  CDATA  #IMPLIED	>
+
+
+<!ELEMENT list (label?, title?, list-item+) >
+<!ATTLIST  list  
+	id  ID  #IMPLIED 
+	list-type  (bullet | disc | circle | square | decimal | lower-roman | upper-roman | lower-alpha | upper-alpha | simple | order | none)  "disc" 
+	prefix-word  CDATA  #IMPLIED
+	list-content  CDATA  #IMPLIED
+	continued-from  IDREF  #IMPLIED
+	specific-use  CDATA  #IMPLIED	>
+
+
+<!ELEMENT list-item (label?, title?, (p | list)+) >
+<!ATTLIST  list-item  
+	id  ID  #IMPLIED 
+	specific-use  CDATA  #IMPLIED	>
+
+
